@@ -2,7 +2,7 @@ import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-dotenv.config({path:'beckend/config/config.env'})
+dotenv.config({path:'backend/config/config.env'})
 
 const sendtoken = (user, statusCode, res) => {
     console.log('Node.js environment:', process.env.NODE_ENV);
