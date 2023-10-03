@@ -75,7 +75,7 @@ const ISAuthenticated = async (req, res, next) => {
 const ISAUthenticated = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
-    console.log("token", token);
+
     if (!token) {
       return next(
         new Errorhandler("please login to access this resourcce", 401)
