@@ -39,7 +39,7 @@ const ISauthenticated = async (req, res, next) => {
     // console.log('tok',token)
     if (!token) {
       return next(
-        new Errorhandler("please lllogin to access this resource", 401)
+        new ErrorHandler("please lllogin to access this resource", 401)
       );
     }
     const codedecode = jwt.verify(token, process.env.JWT_SECRET);
@@ -60,7 +60,7 @@ const ISAuthenticated = async (req, res, next) => {
     // console.log('token2',req.headers.authorization)
     if (!token) {
       return next(
-        new Errorhandler("please lllogin to access this resource", 401)
+        new ErrorHandler("please lllogin to access this resource", 401)
       );
     }
     const codedecode = jwt.verify(token, process.env.JWT_SECRET);
@@ -76,7 +76,7 @@ const ISAUthenticated = async (req, res, next) => {
     try {
       const token = req.cookies.token;
       if (!token) {
-        return next(new Errorhandler("Please log in to access this resource", 401));
+        return next(new ErrorHandler("Please log in to access this resource", 401));
       }
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
       // Set user and userModel properties on req
