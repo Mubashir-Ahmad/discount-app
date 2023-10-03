@@ -77,10 +77,10 @@ const ISAuthenticated = async(req,res,next)=>{
 const ISAUthenticated = async(req,res,next)=>{
     // try{
     try{
-        console.log('tok1',req.cookies.token)
+        console.log('toksa1',req.cookies.token)
         const token = req.cookies.token; 
         // const token = req.rawHeaders[17].split('=')[1]
-        // console.log('token2',req.headers.authorization)
+        console.log('token2',token)
         if(!token){
             return next(new Errorhandler("please lllogin to access this resource",401))
         }
