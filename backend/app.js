@@ -21,6 +21,7 @@ app.use(cors({
   }));
 dotenv.config({ path: "backend/config/config.env" });
 app.use(bodyParser.json());
+app.use(express.json());
 app.use(cookieParser())
 
 
