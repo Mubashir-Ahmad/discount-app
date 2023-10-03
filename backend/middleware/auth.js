@@ -75,10 +75,7 @@ const ISAuthenticated = async (req, res, next) => {
 const ISAUthenticated = async (req, res, next) => {
     try {
         console.log('reqq',req.headers,req.headers.authorization)
-        const authorizationHeader = req.headers.authorization;
-
-        // Assuming it's a Bearer token, you can extract the token part
-        const token = authorizationHeader.split(' ')[1]; 
+        const token = req.headers.authorization; 
         console.log('token',token)
       if (!token) {
         return next(new ErrorHandler("Please log in to access this resource", 401));
