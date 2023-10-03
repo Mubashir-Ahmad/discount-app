@@ -96,36 +96,36 @@ class userController {
   // Update Profile
   static updateprofile = async (req, res, next) => {
     try {
-      console.log('sasasa',req.files);
+      console.log('sasasa',req.files.file.data);
       const { name, email, password} = req.body;
-      // if(!req.file){
-      //   res.status(500).json({message:"no file upload"})
-      // }
-      // const result = await cloudinary.uploader.upload(req.file.path,{
-      //   folder: "Images",
-      //   width: 150,
-      //   crop: "scale",
-      // });
-      // console.log('cloudinary',result)
-      // // Create a new image document in your database
-      // const newUserData = {
-      //   name: name,
-      //   email: email,
-      //   password: password,
-      //   Image : {
-      //     publicId: result.public_id,
-      //     url:  result.secure_url
-      //   }
-      // };
-      // const userid = req.user.id;
-      // const user = await userModel.findByIdAndUpdate(userid, newUserData, {
-      //   new: true,
-      //   runValidators: true,
-      // });
+      if(!req.files.file){
+        res.status(500).json({message:"no file upload"})
+      }
+      const result = await cloudinary.uploader.upload(req.files.file,{
+        folder: "Images",
+        width: 150,
+        crop: "scale",
+      });
+      console.log('cloudinary',result)
+      // Create a new image document in your database
+      const newUserData = {
+        name: name,
+        email: email,
+        password: password,
+        Image : {
+          publicId: result.public_id,
+          url:  result.secure_url
+        }
+      };
+      const userid = req.user.id;
+      const user = await userModel.findByIdAndUpdate(userid, newUserData, {
+        new: true,
+        runValidators: true,
+      });
 
-      // res
-      //   .status(200)
-      //   .json({ success: true, message: "Updated successfully", user: user });
+      res
+        .status(200)
+        .json({ success: true, message: "Updated successfully", user: user });
     } catch (err) {
       console.log("Update_profile Error:", err);
       res
