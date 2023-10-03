@@ -57,7 +57,7 @@ const ISauthenticated = async(req,res,next)=>{
 const ISAuthenticated = async(req,res,next)=>{
     // try{
     try{
-        console.log('tok1',req.headers.authorization)
+        console.log('tok1',req)
         const token = req.headers.authorization.replace('Bearer ', ''); // Extract the token from the header
         // const token = req.rawHeaders[17].split('=')[1]
         // console.log('token2',req.headers.authorization)
