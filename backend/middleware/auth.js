@@ -74,6 +74,7 @@ const ISAuthenticated = async (req, res, next) => {
 };
 const ISAUthenticated = async (req, res, next) => {
     try {
+        console.log('reqq',req)
       const token = req.cookies.token;
       if (!token) {
         return next(new ErrorHandler("Please log in to access this resource", 401));
