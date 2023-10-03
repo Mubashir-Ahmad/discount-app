@@ -73,26 +73,21 @@ const ISAuthenticated = async (req, res, next) => {
   }
 };
 const ISAUthenticated = async (req, res, next) => {
-  // try{
-  try {
-    console.log("toksa1", req.cookies.token);
-    const token = req.cookies.token;
-    // const token = req.rawHeaders[17].split('=')[1]
-    console.log("token2", token);
-    if (!token) {
-      return next(
-        new Errorhandler("please lllogin to access this resource", 401)
-      );
+    try {
+      const token = req.cookies.token;
+      if (!token) {
+        return next(new Errorhandler("Please log in to access this resource", 401));
+      }
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+      // Set user and userModel properties on req
+      req.user = await userModel.findById(decodedToken.id);
+      req.userModel = await userModel.findById(decodedToken.id);
+      next(); // Continue to the next middleware or route handler
+    } catch (err) {
+      console.error(err);
+      return next(err); // Pass any errors to the error handling middleware
     }
-    const codedecode = jwt.verify(token, process.env.JWT_SECRET);
-
-    req.user = await userModel.findById(codedecode.id);
-    req.userModel = await userModel.findById(codedecode.id);
-    next();
-  } catch (err) {
-    console.log(err);
-  }
-};
+  };
 const authorizrRoles = (...roles) => {
   try {
     return (req, res, next) => {
