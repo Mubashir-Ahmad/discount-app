@@ -96,12 +96,12 @@ class userController {
   // Update Profile
   static updateprofile = async (req, res, next) => {
     try {
-      console.log('sasasa',req.files.file.data);
+      console.log('sasasa',req.files.file);
       const { name, email, password} = req.body;
       if(!req.files.file){
         res.status(500).json({message:"no file upload"})
       }
-      const result = await cloudinary.uploader.upload(req.files.file,{
+      const result = await cloudinary.uploader.upload(req.files,{
         folder: "Images",
         width: 150,
         crop: "scale",
