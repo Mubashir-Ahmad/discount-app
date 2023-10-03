@@ -28,7 +28,7 @@ router.post('/login',  userController.login);
 router.post('/logout', userController.logout);
 
 // userdetail
-router.get('/me',ISAuthenticated,userController.getuserdetail);
+router.get('/me',ISAUthenticated,userController.getuserdetail);
 
 // update profile
 router.put('/me/update',ISAUthenticated ,userController.updateprofile)
