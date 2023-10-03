@@ -97,11 +97,16 @@ class userController {
   static updateprofile = async (req, res, next) => {
     try {
       console.log('sasasa',req.files.file);
-      const { name, email, password} = req.body;
+      const { username, email, password} = req.body;
       if(!req.files.file){
         res.status(500).json({message:"no file upload"})
       }
-      const result = await cloudinary.uploader.upload(req.files,{
+      const { data, name } = req.files.file;
+
+      // Create a temporary file with the buffer data
+      const tempFilePath = `/tmp/${name}`;
+      fs.writeFileSync(tempFilePath, data);
+      const result = await cloudinary.uploader.upload(tempFilePath,{
         folder: "Images",
         width: 150,
         crop: "scale",
@@ -109,7 +114,7 @@ class userController {
       console.log('cloudinary',result)
       // Create a new image document in your database
       const newUserData = {
-        name: name,
+        name: username,
         email: email,
         password: password,
         Image : {
