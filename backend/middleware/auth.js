@@ -74,7 +74,7 @@ const ISAuthenticated = async (req, res, next) => {
 };
 const ISAUthenticated = async (req, res, next) => {
     try {
-        console.log('reqq',req)
+        console.log('reqq',req.headers,req.headers.authorization)
         const authorizationHeader = req.headers.authorization;
 
         // Assuming it's a Bearer token, you can extract the token part
