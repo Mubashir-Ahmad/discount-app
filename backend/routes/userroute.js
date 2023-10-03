@@ -1,6 +1,6 @@
 import express from 'express';
 import userController from '../controller/userController.js';
-import {isauthenticated,ISAuthenticated,isAuthenticated,ISauthenticated ,authorizrRoles} from '../middleware/auth.js';
+import {isauthenticated,ISAuthenticated,ISAUthenticated,isAuthenticated,ISauthenticated ,authorizrRoles} from '../middleware/auth.js';
 import multer from 'multer';
 import path from 'path'
 const router = express.Router();
@@ -31,7 +31,7 @@ router.post('/logout', userController.logout);
 router.get('/me',ISAuthenticated,userController.getuserdetail);
 
 // update profile
-router.put('/me/update',ISAuthenticated ,userController.updateprofile)
+router.put('/me/update',ISAUthenticated ,userController.updateprofile)
 
 // Get all user detail -- Admin
 router.get('/admin/user', isAuthenticated ,userController.getalluser);

@@ -74,6 +74,26 @@ const ISAuthenticated = async(req,res,next)=>{
         console.log(err)
     }
 }
+const ISAUthenticated = async(req,res,next)=>{
+    // try{
+    try{
+        console.log('tok1',req.cookies.token)
+        const token = req.cookies.token; 
+        // const token = req.rawHeaders[17].split('=')[1]
+        // console.log('token2',req.headers.authorization)
+        if(!token){
+            return next(new Errorhandler("please lllogin to access this resource",401))
+        }
+        const codedecode = jwt.verify(token,process.env.JWT_SECRET);
+        
+        req.user = await userModel.findById(codedecode.id);
+       req.userModel = await userModel.findById(codedecode.id);
+       next()
+    }
+    catch(err){
+        console.log(err)
+    }
+}
 const authorizrRoles = (...roles)=>{
     try{
     return(req,res,next)=>{
@@ -87,4 +107,4 @@ const authorizrRoles = (...roles)=>{
         console.log(err)
     }
 }
-export {isauthenticated,ISAuthenticated,isAuthenticated,ISauthenticated,authorizrRoles}
+export {isauthenticated,ISAuthenticated,isAuthenticated,ISauthenticated,ISAUthenticated,authorizrRoles}
