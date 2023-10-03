@@ -78,7 +78,7 @@ const ISAUthenticated = async (req, res, next) => {
 
     if (!token) {
       return next(
-        new Errorhandler("please login to access this resourcce", 401)
+        new ErrorHandler("please login to access this resourcce", 401)
       );
     }
     const codedecode = jwt.verify(token, process.env.JWT_SECRET);
