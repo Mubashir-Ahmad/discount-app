@@ -12,6 +12,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors' 
 import cloudinary from 'cloudinary' 
 import fileUpload from 'express-fileupload';
+import cookieParser from 'cookie-parser';
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -20,7 +21,7 @@ app.use(cors({
   }));
 dotenv.config({ path: "backend/config/config.env" });
 app.use(bodyParser.json());
-// app.use()
+app.use(cookieParser())
 
 
 app.use('/api/v1', userroute);
