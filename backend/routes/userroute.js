@@ -31,7 +31,7 @@ router.post('/logout', userController.logout);
 router.get('/me',ISAuthenticated,userController.getuserdetail);
 
 // update profile
-router.put('/me/update',userController.updateprofile)
+router.put('/me/update',ISAUthenticated ,userController.updateprofile)
 
 // Get all user detail -- Admin
 router.get('/admin/user', isAuthenticated ,userController.getalluser);
