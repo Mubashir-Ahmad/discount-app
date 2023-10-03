@@ -19,6 +19,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   }));
+  app.use(bodyParser.json({ limit: '10mb' }));
 dotenv.config({ path: "backend/config/config.env" });
 // More middleware and route handlers
 app.use(cookieParser());
