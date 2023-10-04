@@ -12,7 +12,7 @@ router.get("/search/store",storeController.searchstore)
 
 
 // Create Store
-router.post("/create/store",ISAUthenticated,storeController.createstore)
+router.post("/create/store",storeController.createstore)
 
 // View store
 router.get("/store",storeController.allstore)

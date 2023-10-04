@@ -29,7 +29,7 @@ class storeController {
         },
         discount: existingDiscount,
         category: existingCategory.title,
-        user: req.user.id,
+        user: '64da6b1d70c04f7d1620cae9',
       });
 
       const result = await store_create.save();
