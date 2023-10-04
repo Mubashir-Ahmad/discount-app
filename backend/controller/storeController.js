@@ -29,7 +29,7 @@ class storeController {
         },
         discount: existingDiscount,
         category: existingCategory.title,
-        user: '64da6b1d70c04f7d1620cae9',
+        user: req.user.id,
       });
 
       const result = await store_create.save();
@@ -173,32 +173,6 @@ class storeController {
     }
   };
   static fetchStoreAndProducts = async (req, res, next) => {
-    //   try {
-    //     const  storeId = req.params.id
-    //     console.log('storeid',storeId)
-    //     // Find the store by its ID
-    //     const store = await storeModel.findById(storeId).exec();
-
-    //     if (!store) {
-    //       console.error('Store not found');
-    //       return null;
-    //     }
-
-    //     // Find all products linked to the store
-    //     const products = await productModel.find({ store: store._id }).populate('user').populate('discount').populate('category').exec();
-
-    //     // Combine the store and products into a single object
-    //     const storeWithProducts = {
-    //       store: store.toObject(),
-    //       products: products.map(product => product.toObject())
-    //     };
-    //     res.status(200).json({success:true,storeWithProducts})
-    //     // return storeWithProducts;
-    //   } catch (err) {
-    //     console.error('Error fetching store and products:', err);
-    //     return null;
-    //   }
-    // }
 
     try {
       const storeId = req.params.id;
