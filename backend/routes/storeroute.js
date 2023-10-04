@@ -1,6 +1,6 @@
 import express from 'express';
 import storeController from '../controller/storeController.js';
-import { isauthenticated,ISauthenticated,isAuthenticated , authorizrRoles, ISAuthenticated } from '../middleware/auth.js';
+import { isauthenticated,ISAUthenticated,ISauthenticated,isAuthenticated , authorizrRoles, ISAuthenticated } from '../middleware/auth.js';
 import productController from '../controller/productController.js';
 
 
@@ -12,7 +12,7 @@ router.get("/search/store",storeController.searchstore)
 
 
 // Create Store
-router.post("/create/store",ISauthenticated,storeController.createstore)
+router.post("/create/store",ISAUthenticated,storeController.createstore)
 
 // View store
 router.get("/store",storeController.allstore)
@@ -24,7 +24,7 @@ router.put("/update/store/:id",ISauthenticated,storeController.updatestore)
 router.delete("/delete/store/:id",isAuthenticated,storeController.deletestore)
 
 // Single store
-router.get("/single/store/:id",ISAuthenticated,storeController.fetchStoreAndProducts)
+router.get("/single/store/:id",ISAUthenticated,storeController.fetchStoreAndProducts)
 
 
 // get stores
