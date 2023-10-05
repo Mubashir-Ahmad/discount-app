@@ -96,7 +96,7 @@ class userController {
   // Update Profile
   static updateprofile = async (req, res, next) => {
     try {
-      console.log('sasasa',req.files);
+      console.log('sasasa',req.body,req.body.name);
       const {  email, password} = req.body;
       const { username} = req.body.name;
       if(!req.files.file){
