@@ -96,9 +96,10 @@ class userController {
   // Update Profile
   static updateprofile = async (req, res, next) => {
     try {
-      console.log('sasasa',req.body,req.body.name);
+      console.log('sasasa',req.body.name);
       const {  email, password} = req.body;
-      const { username} = req.body.name;
+      const  username = req.body.name;
+      console.log('name',username,req.body.name)
       if(!req.files.file){
         res.status(500).json({message:"no file upload"})
       }
